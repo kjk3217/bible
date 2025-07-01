@@ -1,184 +1,125 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>성경 강해집</title>
-    
-    <!-- PWA 기본 설정 -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#287f6e">
-    <meta name="background-color" content="#287f6e">
-    
-    <!-- PWA 디스플레이 설정 -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="강해집">
-    
-    <!-- iOS Safari 지원 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="성경 강해집">
-    
-    <!-- iOS 아이콘 설정 -->
-    <link rel="apple-touch-icon" href="icon-192.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
-    
-    <!-- 표준 파비콘 -->
-    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-    <link rel="shortcut icon" href="icon-192.png">
-    
-    <!-- Windows 타일 설정 -->
-    <meta name="msapplication-TileImage" content="icon-192.png">
-    <meta name="msapplication-TileColor" content="#287f6e">
-    <meta name="msapplication-navbutton-color" content="#287f6e">
-    
-    <!-- SEO 및 소셜 미디어 -->
-    <meta name="description" content="계시록과 이사야 강해를 공부할 수 있는 모바일 PWA 앱">
-    <meta name="keywords" content="성경, 강해, 계시록, 이사야, 성경공부, PWA">
-    <meta name="author" content="성경 강해집">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="성경 강해집">
-    <meta property="og:description" content="계시록과 이사야 강해를 공부할 수 있는 모바일 PWA 앱">
-    <meta property="og:image" content="icon-512.png">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="성경 강해집">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="성경 강해집">
-    <meta name="twitter:description" content="계시록과 이사야 강해를 공부할 수 있는 모바일 PWA 앱">
-    <meta name="twitter:image" content="icon-512.png">
-    
-    <!-- CSS 로드 -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- 프리로드 설정 -->
-    <link rel="preload" href="app.js" as="script">
-    <link rel="preload" href="style.css" as="style">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#287f6e" />
+
+  <!-- iOS Safari -->
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+  <link rel="stylesheet" href="style.css" />
+  <title>성경 강해집 공부</title>
+
+  <!-- 서비스 워커 등록 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () =>
+        navigator.serviceWorker
+          .register('./sw.js')
+          .catch(err => console.error('SW 등록 실패', err))
+      );
+    }
+  </script>
 </head>
 <body>
-    <!-- PWA 설치 배너 -->
-    <div id="install-prompt" class="install-prompt hidden">
-        <div class="install-content">
-            <div class="install-icon">📱</div>
-            <div class="install-text">
-                <h3>앱으로 설치</h3>
-                <p>홈 화면에 추가하여 더 편리하게 사용하세요</p>
-            </div>
-            <div class="install-buttons">
-                <button id="install-yes" class="install-btn install-yes">설치</button>
-                <button id="install-no" class="install-btn install-no">취소</button>
-            </div>
-        </div>
+  <!-- 📌 메인 화면 -->
+  <section id="main" class="screen active">
+    <div class="container">
+      <header><h1 class="app-title">성경 강해집</h1></header>
+
+      <main class="menu">
+        <button class="menu-btn"
+                aria-label="요한계시록 장 선택 화면으로 이동"
+                onclick="loadChapters('revelation')">
+          요한 계시록
+        </button>
+
+        <button class="menu-btn"
+                aria-label="이사야 장 선택 화면으로 이동"
+                onclick="loadChapters('isaiah')">
+          이사야
+        </button>
+
+        <button class="menu-btn"
+                aria-label="설정 화면으로 이동"
+                onclick="showScreen('settings')">
+          <span class="icon">⚙</span> 설정
+        </button>
+      </main>
+
+      <footer><small class="version">성경 공부 앱 v2.0</small></footer>
     </div>
+  </section>
 
-    <!-- 메인 화면 -->
-    <div id="main-screen" class="screen active">
-        <div class="main-container">
-            <!-- 상단 타이틀 -->
-            <div class="main-header">
-                <h1 class="main-title">성경<br>강해집</h1>
-            </div>
-            
-            <!-- 중앙 버튼들 -->
-            <div class="main-content">
-                <button id="revelation-btn" class="main-button">요한 계시록</button>
-                <button id="isaiah-btn" class="main-button">이사야</button>
-                <button id="settings-btn" class="main-button settings-button">
-                    <span class="settings-icon">⚙️</span>
-                    설정
-                </button>
-            </div>
-            
-            <!-- 하단 버전 정보 -->
-            <div class="main-footer">
-                <p class="version-text">성경 공부 앱 v2.0</p>
-            </div>
-        </div>
+  <!-- 📌 설정 화면 -->
+  <section id="settings" class="screen">
+    <div class="settings-wrap">
+      <!-- 글자 크기 -->
+      <div class="card">
+        <label for="fontRange" class="card-title">글자 크기</label>
+        <input type="range" id="fontRange" min="80" max="200" step="10">
+        <div id="fontVal" class="range-val">100%</div>
+      </div>
+
+      <!-- 레이아웃 -->
+      <div class="card">
+        <label for="layoutRange" class="card-title">레이아웃</label>
+        <input type="range" id="layoutRange" min="60" max="100" step="5">
+        <div id="layoutVal" class="range-val">100%</div>
+      </div>
+
+      <!-- 버튼 크기 -->
+      <div class="card">
+        <label for="btnRange" class="card-title">버튼 크기</label>
+        <input type="range" id="btnRange" min="80" max="200" step="10">
+        <div id="btnVal" class="range-val">100%</div>
+      </div>
+
+      <!-- 저장 / 닫기 -->
+      <div class="settings-actions">
+        <button class="save-btn" onclick="saveSettings()">저장</button>
+        <button class="close-btn" onclick="showScreen('main')">닫기</button>
+      </div>
     </div>
+  </section>
 
-    <!-- 설정 화면 -->
-    <div id="settings-screen" class="screen">
-        <div class="header">
-            <button id="back-from-settings" class="header-btn">←</button>
-            <h1>설정</h1>
-            <div class="header-spacer"></div>
-        </div>
-        <div class="content">
-            <div class="settings-section">
-                <h2>화면 설정</h2>
-                
-                <div class="setting-item">
-                    <label for="font-size">글꼴 크기</label>
-                    <div class="slider-container">
-                        <input type="range" id="font-size" min="24" max="48" value="32" step="2">
-                        <span id="font-size-value">32px</span>
-                    </div>
-                </div>
+  <!-- 📌 장 선택 화면 -->
+  <section id="chapters" class="screen">
+    <div class="chapter-list"></div>
+  </section>
 
-                <div class="setting-item">
-                    <label for="button-size">버튼 크기</label>
-                    <div class="slider-container">
-                        <input type="range" id="button-size" min="80" max="120" value="100" step="5">
-                        <span id="button-size-value">100%</span>
-                    </div>
-                </div>
+  <!-- 📌 강해 내용 화면 -->
+  <section id="content" class="screen">
+    <div class="content-wrap">
+      <header class="content-header">
+        <h2 id="contentTitle">계시록 1장</h2>
+      </header>
 
-                <div class="setting-item">
-                    <label for="layout-size">레이아웃 크기</label>
-                    <div class="slider-container">
-                        <input type="range" id="layout-size" min="80" max="120" value="100" step="5">
-                        <span id="layout-size-value">100%</span>
-                    </div>
-                </div>
-            </div>
-            
-            <button id="save-settings" class="save-btn">설정 저장</button>
-        </div>
+      <main class="content-body" id="contentBody">
+        강해 본문이 준비 중입니다.
+      </main>
+
+      <footer class="content-footer">
+        <button class="list-btn"
+                aria-label="장 목록 화면으로 이동"
+                onclick="showScreen('chapters')">
+          목록
+        </button>
+      </footer>
     </div>
+  </section>
 
-    <!-- 장 선택 화면 -->
-    <div id="chapter-screen" class="screen">
-        <div class="chapter-container">
-            <div id="chapter-list" class="chapter-list">
-                <!-- 장 버튼들이 동적으로 생성됩니다 -->
-            </div>
-        </div>
-    </div>
+  <!-- 📌 커스텀 팝업 -->
+  <div id="popup" class="popup">
+    <div class="popup-box">설정이 저장되었습니다!</div>
+  </div>
 
-    <!-- 강해 내용 화면 -->
-    <div id="content-screen" class="screen">
-        <div class="content-container">
-            <!-- 상단 고정바 -->
-            <div class="content-header-bar">
-                <h1 id="content-title">계시록 1장</h1>
-            </div>
-            
-            <!-- 강해 내용 영역 -->
-            <div class="content-main">
-                <div id="study-content" class="study-content-text">
-                    강해 내용...
-                </div>
-            </div>
-            
-            <!-- 하단 목록 버튼 -->
-            <div class="content-footer">
-                <button id="back-from-content" class="list-btn">목록</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 커스텀 팝업 -->
-    <div id="custom-popup" class="popup-overlay">
-        <div class="popup-content">
-            <div class="popup-message" id="popup-message">설정이 저장되었습니다!</div>
-            <button id="popup-ok" class="popup-btn">확인</button>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
