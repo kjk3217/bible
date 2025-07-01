@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>성경 강해집</title>
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+  <!-- Theme color -->
+  <meta name="theme-color" content="#287f6e">
+  <!-- iOS support -->
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <!-- 스타일 -->
+  <link rel="stylesheet" href="style.css" preload>
+</head>
+<body>
+  <noscript>
+    <p style="color:#fff;text-align:center;padding:1rem;">
+      자바스크립트를 활성화해야 앱을 사용할 수 있습니다.
+    </p>
+  </noscript>
+  <div id="app">
+    <!-- 메인 화면 -->
+    <main id="main-screen" class="screen active" role="main">
+      <h1>성경 강해집</h1>
+      <button id="btn-revelation" aria-label="요한 계시록 보기">요한 계시록</button>
+      <button id="btn-isaiah" aria-label="이사야 보기">이사야</button>
+      <button id="btn-settings" aria-label="설정 보기">설정</button>
+    </main>
+
+    <!-- 장 선택 화면 -->
+    <section id="chapter-screen" class="screen" aria-labelledby="chapter-heading">
+      <div class="chapter-list" role="list"></div>
+      <button id="btn-back-from-chapter" class="back-btn" aria-label="메인 화면으로 돌아가기">뒤로</button>
+    </section>
+
+    <!-- 강해 내용 화면 -->
+    <article id="content-screen" class="screen" aria-labelledby="content-title">
+      <header class="content-header">
+        <span id="content-title">계시록 1장</span>
+      </header>
+      <div class="content-body">
+        <div id="content">강해 내용 …</div>
+      </div>
+      <button id="btn-back-from-content" class="list-btn" aria-label="장 선택 화면으로 돌아가기">목록</button>
+    </article>
+
+    <!-- 설정 화면 -->
+    <section id="settings-screen" class="screen">
+      <button id="btn-back-from-settings" class="back-btn" aria-label="메인 화면으로 돌아가기">뒤로</button>
+      <!-- 설정 요소 영역 -->
+    </section>
+  </div>
+  <script src="app.js" defer></script>
+</body>
+</html>
