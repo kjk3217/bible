@@ -108,9 +108,12 @@ async function openChapter(book,chap){
    설정 슬라이더
 ================================================== */
 const sliders=[
-  {id:'fontRange',  css:v=>document.documentElement.style.setProperty('--font-base',`${Math.round(32*v/100)}px`)},
-  {id:'layoutRange',css:v=>document.documentElement.style.setProperty('--menu',`${v}%`)},
-  {id:'btnRange',   css:v=>document.documentElement.style.setProperty('--btn-scale',v/100)}
+  {id:'fontRange',  css:v=>document.documentElement
+                            .style.setProperty('--font-base',`${Math.round(32*v/100)}px`)},
+  {id:'layoutRange',css:v=>document.documentElement
+                            .style.setProperty('--menu-width',`${v}%`)},
+  {id:'btnRange',   css:v=>document.documentElement
+                            .style.setProperty('--btn-scale',v/100)}
 ];
 
 function handleSliderInput(e){
