@@ -1,84 +1,22 @@
 {
   "name": "성경 강해집",
   "short_name": "강해집",
-  "description": "계시록과 이사야 강해를 공부할 수 있는 모바일 PWA 앱",
-  "start_url": "./",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#287f6e",
   "background_color": "#287f6e",
-  "scope": "./",
-  "lang": "ko",
-  "categories": ["education", "books", "lifestyle", "productivity"],
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "type": "image/png"
     },
     {
-      "src": "icon-512.png", 
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3e%3crect width='192' height='192' fill='%23287f6e'/%3e%3ctext x='96' y='110' font-family='Arial' font-size='80' fill='white' text-anchor='middle'%3e📖%3c/text%3e%3ctext x='96' y='150' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3e강해집%3c/text%3e%3c/svg%3e",
-      "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3e%3crect width='512' height='512' fill='%23287f6e'/%3e%3ctext x='256' y='300' font-family='Arial' font-size='200' fill='white' text-anchor='middle'%3e📖%3c/text%3e%3ctext x='256' y='400' font-family='Arial' font-size='50' fill='white' text-anchor='middle'%3e강해집%3c/text%3e%3c/svg%3e",
-      "sizes": "512x512", 
-      "type": "image/svg+xml",
-      "purpose": "any"
-    }
-  ],
-  "prefer_related_applications": false,
-  "screenshots": [
-    {
-      "src": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 568'%3e%3crect width='320' height='568' fill='%23287f6e'/%3e%3crect x='20' y='40' width='280' height='60' fill='%23226b5e' rx='10'/%3e%3ctext x='160' y='80' font-family='Arial' font-size='24' fill='white' text-anchor='middle'%3e성경 강해집%3c/text%3e%3crect x='40' y='140' width='240' height='80' fill='white' rx='15'/%3e%3ctext x='160' y='185' font-family='Arial' font-size='18' fill='%231f6d5e' text-anchor='middle'%3e요한 계시록%3c/text%3e%3crect x='40' y='240' width='240' height='80' fill='white' rx='15'/%3e%3ctext x='160' y='285' font-family='Arial' font-size='18' fill='%231f6d5e' text-anchor='middle'%3e이사야%3c/text%3e%3crect x='40' y='340' width='240' height='60' fill='white' rx='15'/%3e%3ctext x='160' y='375' font-family='Arial' font-size='16' fill='%231f6d5e' text-anchor='middle'%3e⚙️ 설정%3c/text%3e%3ctext x='160' y='520' font-family='Arial' font-size='14' fill='white' text-anchor='middle'%3e성경 공부 앱 v2.0%3c/text%3e%3c/svg%3e",
-      "sizes": "320x568",
-      "type": "image/svg+xml",
-      "form_factor": "narrow",
-      "label": "메인 화면"
-    },
-    {
-      "src": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 568'%3e%3crect width='320' height='568' fill='%23287f6e'/%3e%3crect x='20' y='20' width='280' height='60' fill='%23226b5e' rx='10'/%3e%3ctext x='160' y='55' font-family='Arial' font-size='18' fill='white' text-anchor='middle'%3e계시록 1장%3c/text%3e%3ctext x='30' y='100' font-family='Arial' font-size='16' fill='white'%3e요한계시록은 신약성경의%3c/text%3e%3ctext x='30' y='125' font-family='Arial' font-size='16' fill='white'%3e마지막 책으로...%3c/text%3e%3crect x='20' y='480' width='280' height='60' fill='white' rx='15'/%3e%3ctext x='160' y='515' font-family='Arial' font-size='18' fill='%231f6d5e' text-anchor='middle'%3e목록%3c/text%3e%3c/svg%3e",
-      "sizes": "320x568",
-      "type": "image/svg+xml", 
-      "form_factor": "narrow",
-      "label": "강해 내용 화면"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "계시록 강해",
-      "short_name": "계시록",
-      "description": "요한 계시록 강해 바로가기",
-      "url": "./?book=revelation",
-      "icons": [
-        {
-          "src": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3e%3crect width='96' height='96' fill='%23287f6e'/%3e%3ctext x='48' y='60' font-family='Arial' font-size='40' fill='white' text-anchor='middle'%3e📖%3c/text%3e%3c/svg%3e",
-          "sizes": "96x96",
-          "type": "image/svg+xml"
-        }
-      ]
-    },
-    {
-      "name": "이사야 강해", 
-      "short_name": "이사야",
-      "description": "이사야 강해 바로가기",
-      "url": "./?book=isaiah",
-      "icons": [
-        {
-          "src": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3e%3crect width='96' height='96' fill='%23287f6e'/%3e%3ctext x='48' y='60' font-family='Arial' font-size='40' fill='white' text-anchor='middle'%3e📜%3c/text%3e%3c/svg%3e",
-          "sizes": "96x96",
-          "type": "image/svg+xml"
-        }
-      ]
+      "type": "image/png"
     }
   ]
 }
