@@ -8,7 +8,7 @@
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#287f6e" />
 
-  <!-- iOS Safari -->
+  <!-- iOS -->
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -16,39 +16,29 @@
   <link rel="stylesheet" href="style.css" />
   <title>성경 강해집 공부</title>
 
-  <!-- 서비스 워커 등록 -->
+  <!-- 서비스 워커 -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () =>
-        navigator.serviceWorker
-          .register('./sw.js')
-          .catch(err => console.error('SW 등록 실패', err))
+        navigator.serviceWorker.register('./sw.js').catch(console.error)
       );
     }
   </script>
 </head>
 <body>
-  <!-- 📌 메인 화면 -->
+  <!-- 메인 -->
   <section id="main" class="screen active">
     <div class="container">
       <header><h1 class="app-title">성경 강해집</h1></header>
 
       <main class="menu">
-        <button class="menu-btn"
-                aria-label="요한계시록 장 선택 화면으로 이동"
-                onclick="loadChapters('revelation')">
+        <button class="menu-btn" aria-label="요한계시록 장 선택" onclick="loadChapters('revelation')">
           요한 계시록
         </button>
-
-        <button class="menu-btn"
-                aria-label="이사야 장 선택 화면으로 이동"
-                onclick="loadChapters('isaiah')">
+        <button class="menu-btn" aria-label="이사야 장 선택" onclick="loadChapters('isaiah')">
           이사야
         </button>
-
-        <button class="menu-btn"
-                aria-label="설정 화면으로 이동"
-                onclick="showScreen('settings')">
+        <button class="menu-btn" aria-label="설정 화면" onclick="showScreen('settings')">
           <span class="icon">⚙</span> 설정
         </button>
       </main>
@@ -57,31 +47,28 @@
     </div>
   </section>
 
-  <!-- 📌 설정 화면 -->
+  <!-- 설정 -->
   <section id="settings" class="screen">
     <div class="settings-wrap">
       <!-- 글자 크기 -->
       <div class="card">
         <label for="fontRange" class="card-title">글자 크기</label>
-        <input type="range" id="fontRange" min="80" max="200" step="10">
+        <input type="range" id="fontRange" min="100" max="200" step="10" value="100">
         <div id="fontVal" class="range-val">100%</div>
       </div>
-
       <!-- 레이아웃 -->
       <div class="card">
         <label for="layoutRange" class="card-title">레이아웃</label>
-        <input type="range" id="layoutRange" min="60" max="100" step="5">
+        <input type="range" id="layoutRange" min="100" max="200" step="10" value="100">
         <div id="layoutVal" class="range-val">100%</div>
       </div>
-
       <!-- 버튼 크기 -->
       <div class="card">
         <label for="btnRange" class="card-title">버튼 크기</label>
-        <input type="range" id="btnRange" min="80" max="200" step="10">
+        <input type="range" id="btnRange" min="100" max="200" step="10" value="100">
         <div id="btnVal" class="range-val">100%</div>
       </div>
 
-      <!-- 저장 / 닫기 -->
       <div class="settings-actions">
         <button class="save-btn" onclick="saveSettings()">저장</button>
         <button class="close-btn" onclick="showScreen('main')">닫기</button>
@@ -89,36 +76,24 @@
     </div>
   </section>
 
-  <!-- 📌 장 선택 화면 -->
+  <!-- 장 선택 -->
   <section id="chapters" class="screen">
     <div class="chapter-list"></div>
   </section>
 
-  <!-- 📌 강해 내용 화면 -->
+  <!-- 강해 내용 -->
   <section id="content" class="screen">
     <div class="content-wrap">
-      <header class="content-header">
-        <h2 id="contentTitle">계시록 1장</h2>
-      </header>
-
-      <main class="content-body" id="contentBody">
-        강해 본문이 준비 중입니다.
-      </main>
-
+      <header class="content-header"><h2 id="contentTitle">계시록 1장</h2></header>
+      <main  class="content-body"  id="contentBody">강해 본문이 준비 중입니다.</main>
       <footer class="content-footer">
-        <button class="list-btn"
-                aria-label="장 목록 화면으로 이동"
-                onclick="showScreen('chapters')">
-          목록
-        </button>
+        <button class="list-btn" aria-label="장 목록" onclick="showScreen('chapters')">목록</button>
       </footer>
     </div>
   </section>
 
-  <!-- 📌 커스텀 팝업 -->
-  <div id="popup" class="popup">
-    <div class="popup-box">설정이 저장되었습니다!</div>
-  </div>
+  <!-- 팝업 -->
+  <div id="popup" class="popup"><div class="popup-box">설정이 저장되었습니다!</div></div>
 
   <script src="app.js"></script>
 </body>
