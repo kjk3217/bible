@@ -2,31 +2,31 @@
    전역 변수
 ──────────────────────────────── */
 :root{
-  --bg         : #287f6e;
-  --fg         : #ffffff;
-  --text-green : #1f6d5e;
+  --bg           : #287f6e;
+  --fg           : #ffffff;
+  --text-green   : #1f6d5e;
 
-  /* 확대·축소 (슬라이더) */
-  --ui-scale   : 1;           /* 1 =100%, 2 =200% */
+  /* ▼ 슬라이더로 조절되는 값 (1.0–2.0 배) */
+  --font-scale   : 1;   /* 글꼴 전용 */
+  --btn-scale    : 1;   /* 버튼 크기 전용 */
+  --layout-rate  : 1;   /* 1 = 80% 폭, 1.25 = 100% 폭 */
 
-  /* 기본 크기 */
-  --font-base  : calc(32px * var(--ui-scale));
-  --title-size : calc(48px * var(--ui-scale));
-  --btn-min    : calc(48px * var(--ui-scale));
-
-  /* 레이아웃 */
-  --menu-width : 80%;         /* 슬라이더로 80%~160% */
+  /* 기본 크기 —— “성경 강해집” 샘플 기준(100 %) */
+  --font-base    : calc(32px * var(--font-scale));
+  --title-size   : calc(48px * var(--font-scale));
+  --btn-min-h    : calc(48px * var(--btn-scale));
 
   /* 모양 */
-  --radius     : 14px;
-  --shadow     : 0 6px 0 rgba(0,0,0,.25);
-  --shadow-press:0 2px 0 rgba(0,0,0,.25);
+  --radius       : 14px;
+  --shadow       : 0 6px 0 rgba(0,0,0,.25);
+  --shadow-press : 0 2px 0 rgba(0,0,0,.25);
 
-  --btn-gap    : 2rem;
-  --section-pad: 4vh 0 6vh;
+  /* 여백 */
+  --btn-gap      : 2rem;
+  --section-pad  : 4vh 0 6vh;
 }
 
-/* ─── Reset ─── */
+/* ───── Reset ───── */
 html,body{
   margin:0;padding:0;width:100%;height:100%;
   font-family:"Noto Sans KR",sans-serif;
@@ -38,12 +38,12 @@ html,body{
 .screen.active{display:block;}
 *:focus-visible{outline:3px solid #ffe600;outline-offset:2px;}
 
-/* ─── 버튼 ─── */
+/* ───── 버튼 ───── */
 button{
-  width:100%;min-height:var(--btn-min);
-  padding:calc(1rem * var(--ui-scale)) calc(0.5rem * var(--ui-scale));
+  width:100%;min-height:var(--btn-min-h);
+  padding:calc(1rem * var(--btn-scale)) calc(0.5rem * var(--btn-scale));
   border:none;border-radius:var(--radius);
-  font-weight:700;font-size:calc(1em * var(--ui-scale));
+  font-weight:700;font-size:1em; /* 글자 크기는 글꼴 슬라이더로만 */
   text-align:center;cursor:pointer;user-select:none;
   transition:transform .1s, box-shadow .1s;
 }
@@ -52,35 +52,38 @@ button:active{transform:translateY(4px);box-shadow:var(--shadow-press);}
   button,button:active{transition:none;box-shadow:none;transform:none;}
 }
 
-/* ─── 메인 ─── */
+/* ───── 메인 화면 ───── */
 .container{
   display:flex;flex-direction:column;justify-content:space-between;align-items:center;
   height:100%;padding:var(--section-pad);
 }
 .app-title{font-size:var(--title-size);font-weight:900;margin:0;text-align:center;}
 .menu{
-  width:var(--menu-width);max-width:340px;
+  /* 80% 에서 100% 사이로만 변해 좌우 흔들림 방지 */
+  width:calc(80% * var(--layout-rate));
+  max-width:340px;
   display:flex;flex-direction:column;align-items:center;gap:var(--btn-gap);
 }
 .menu-btn{background:var(--fg);color:var(--text-green);box-shadow:var(--shadow);}
 
-/* ─── 장 목록 ─── */
+/* ───── 장 목록 ───── */
 .chapter-list{
-  width:100%;max-width:480px;margin:0 auto;
+  width:calc(80% * var(--layout-rate));
+  max-width:480px;margin:0 auto;
   display:flex;flex-direction:column;align-items:center;
   gap:var(--btn-gap);height:100%;overflow-y:auto;padding-top:4vh;
 }
 .chapter-btn{width:100%;max-width:340px;background:var(--fg);color:var(--text-green);box-shadow:var(--shadow);}
 
-/* ─── 강해 ─── */
+/* ───── 강해 내용 ───── */
 .content-wrap{display:flex;flex-direction:column;height:100%;}
 .content-header{flex:0 0 auto;padding:1rem 0;border-bottom:2px solid var(--fg);text-align:center;}
-.content-header h2{margin:0;font-size:calc(1em * var(--ui-scale));font-weight:900;color:var(--fg);}
+.content-header h2{margin:0;font-size:calc(1em * var(--font-scale));font-weight:900;color:var(--fg);}
 .content-body{flex:1 1 auto;overflow-y:auto;padding:1.2rem 1.5rem;text-align:left;word-break:keep-all;}
 .content-footer{flex:0 0 auto;padding:2vh 0 4vh;display:flex;justify-content:center;}
 .list-btn{max-width:500px;background:var(--fg);color:var(--text-green);box-shadow:var(--shadow);}
 
-/* ─── 설정 ─── */
+/* ───── 설정 화면 ───── */
 .settings-wrap{display:flex;flex-direction:column;gap:var(--btn-gap);align-items:center;padding:var(--section-pad);}
 .card{width:90%;max-width:350px;padding:1.2rem;background:var(--fg);color:var(--text-green);border-radius:var(--radius);box-shadow:var(--shadow);}
 .card-title{font-weight:700;margin-bottom:.8rem;display:block;}
@@ -92,6 +95,6 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .save-btn{background:#f9c000;color:var(--text-green);}
 .close-btn{background:var(--text-green);color:var(--fg);}
 
-/* ─── 팝업 ─── */
+/* ───── 팝업 ───── */
 .popup{position:fixed;inset:0;display:none;justify-content:center;align-items:center;background:rgba(0,0,0,.45);z-index:999;}
 .popup-box{background:var(--fg);color:var(--text-green);padding:1.4rem 2rem;border-radius:var(--radius);font-weight:700;box-shadow:var(--shadow);}
