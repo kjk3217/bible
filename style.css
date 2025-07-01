@@ -5,10 +5,18 @@
   --bg            : #287f6e;
   --fg            : #ffffff;
   --text-green    : #1f6d5e;
-  --font-base     : clamp(28px, 4vw, 32px);
+
+  /* 크기·레이아웃 기본값 */
+  --font-base     : clamp(28px, 4vw, 32px); /* 시니어 친화 */
+  --btn-scale     : 1;      /* 버튼/글자 배율 (설정 슬라이더) */
+  --menu-width    : 80%;    /* 메인·목록 너비 (슬라이더) */
+
+  /* 스타일 */
   --radius        : 14px;
   --shadow        : 0 6px 0 rgba(0,0,0,.25);
   --shadow-press  : 0 2px 0 rgba(0,0,0,.25);
+
+  /* 레이아웃 간격 */
   --btn-gap       : 2rem;
   --section-pad   : 4vh 0 6vh;
 }
@@ -27,11 +35,12 @@ html,body{
 
 /* ───── 공통 버튼 ───── */
 button{
-  width:100%;min-height:48px;
-  padding:1rem .5rem;
+  width:100%;
+  min-height:calc(48px * var(--btn-scale));
+  padding:calc(1rem * var(--btn-scale)) calc(0.5rem * var(--btn-scale));
   border:none;border-radius:var(--radius);
-  font-weight:700;font-size:1em;text-align:center;
-  cursor:pointer;user-select:none;
+  font-weight:700;font-size:calc(1em * var(--btn-scale));
+  text-align:center;cursor:pointer;user-select:none;
   transition:transform .1s, box-shadow .1s;
 }
 button:active{transform:translateY(4px);box-shadow:var(--shadow-press);}
@@ -39,14 +48,33 @@ button:active{transform:translateY(4px);box-shadow:var(--shadow-press);}
   button,button:active{transition:none;box-shadow:none;transform:none;}
 }
 
-/* ───── 메인 & 목록 ───── */
-.container{display:flex;flex-direction:column;justify-content:space-between;align-items:center;height:100%;padding:var(--section-pad);}
+/* ───── 메인 화면 ───── */
+.container{
+  display:flex;flex-direction:column;justify-content:space-between;align-items:center;
+  height:100%;padding:var(--section-pad);
+}
 .app-title{font-size:40px;font-weight:900;margin:0;text-align:center;}
-.menu,.chapter-list{display:flex;flex-direction:column;align-items:center;gap:var(--btn-gap);width:80%;max-width:340px;}
-.menu-btn,.chapter-btn{background:var(--fg);color:var(--text-green);box-shadow:var(--shadow);}
-.chapter-list{height:100%;overflow-y:auto;padding-top:4vh;}
+.menu{
+  width:var(--menu-width);
+  max-width:340px;
+  display:flex;flex-direction:column;align-items:center;
+  gap:var(--btn-gap);
+}
+.menu-btn{background:var(--fg);color:var(--text-green);box-shadow:var(--shadow);}
 
-/* ───── 강해 내용 ───── */
+/* ───── 장 목록 화면 ───── */
+.chapter-list{
+  width:100%;max-width:480px;      /* ★ 리스트 자체를 화면 중앙에 */
+  margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;
+  gap:var(--btn-gap);height:100%;overflow-y:auto;padding-top:4vh;
+}
+.chapter-btn{
+  width:100%;max-width:340px;
+  background:var(--fg);color:var(--text-green);box-shadow:var(--shadow);
+}
+
+/* ───── 강해 내용 화면 ───── */
 .content-wrap{display:flex;flex-direction:column;height:100%;}
 .content-header{flex:0 0 auto;padding:1rem 0;border-bottom:2px solid var(--fg);text-align:center;}
 .content-header h2{margin:0;font-size:1em;font-weight:900;color:var(--fg);}
