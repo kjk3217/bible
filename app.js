@@ -108,12 +108,18 @@ async function openChapter(book,chap){
    설정 슬라이더
 ================================================== */
 const sliders=[
-  {id:'fontRange',  css:v=>document.documentElement
-                            .style.setProperty('--font-base',`${Math.round(32*v/100)}px`)},
-  {id:'layoutRange',css:v=>document.documentElement
-                            .style.setProperty('--menu-width',`${v}%`)},
-  {id:'btnRange',   css:v=>document.documentElement
-                            .style.setProperty('--btn-scale',v/100)}
+  {id:'fontRange',
+    css:v=>document.documentElement
+             .style.setProperty('--font-base',`${Math.round(32*v/100)}px`)},
+  {id:'layoutRange',
+    css:v=>document.documentElement
+             .style.setProperty('--menu-width',`${v}%`)},
+  {id:'btnRange',    /* ★ 전체 UI 스케일 */
+    css:v=>{
+      const scale=v/100;
+      document.documentElement.style.setProperty('--ui-scale',scale);
+      /* 타이틀·버튼·min-height 등은 CSS 변수 연쇄로 자동 반영 */
+    }}
 ];
 
 function handleSliderInput(e){
