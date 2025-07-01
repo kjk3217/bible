@@ -2,30 +2,31 @@
    전역 변수
 ──────────────────────────────── */
 :root{
-  --bg            : #287f6e;
-  --fg            : #ffffff;
-  --text-green    : #1f6d5e;
+  --bg         : #287f6e;
+  --fg         : #ffffff;
+  --text-green : #1f6d5e;
 
-  /* 스케일링 변수 (설정 슬라이더로 1.0 ~ 2.0) */
-  --ui-scale      : 1;          /* 1 = 100 %, 2 = 200 % */
+  /* 확대·축소 (슬라이더) */
+  --ui-scale   : 1;           /* 1 =100%, 2 =200% */
 
-  /* UI 기본 크기 */
-  --font-base     : calc(32px * var(--ui-scale));
-  --title-size    : calc(48px * var(--ui-scale));
-  --btn-min       : calc(48px * var(--ui-scale));
+  /* 기본 크기 */
+  --font-base  : calc(32px * var(--ui-scale));
+  --title-size : calc(48px * var(--ui-scale));
+  --btn-min    : calc(48px * var(--ui-scale));
 
   /* 레이아웃 */
-  --menu-width    : 80%;
-  --btn-gap       : 2rem;
-  --section-pad   : 4vh 0 6vh;
+  --menu-width : 80%;         /* 슬라이더로 80%~160% */
 
   /* 모양 */
-  --radius        : 14px;
-  --shadow        : 0 6px 0 rgba(0,0,0,.25);
-  --shadow-press  : 0 2px 0 rgba(0,0,0,.25);
+  --radius     : 14px;
+  --shadow     : 0 6px 0 rgba(0,0,0,.25);
+  --shadow-press:0 2px 0 rgba(0,0,0,.25);
+
+  --btn-gap    : 2rem;
+  --section-pad: 4vh 0 6vh;
 }
 
-/* ───── Reset & 기본 ───── */
+/* ─── Reset ─── */
 html,body{
   margin:0;padding:0;width:100%;height:100%;
   font-family:"Noto Sans KR",sans-serif;
@@ -37,7 +38,7 @@ html,body{
 .screen.active{display:block;}
 *:focus-visible{outline:3px solid #ffe600;outline-offset:2px;}
 
-/* ───── 공통 버튼 ───── */
+/* ─── 버튼 ─── */
 button{
   width:100%;min-height:var(--btn-min);
   padding:calc(1rem * var(--ui-scale)) calc(0.5rem * var(--ui-scale));
@@ -51,34 +52,27 @@ button:active{transform:translateY(4px);box-shadow:var(--shadow-press);}
   button,button:active{transition:none;box-shadow:none;transform:none;}
 }
 
-/* ───── 메인 화면 ───── */
+/* ─── 메인 ─── */
 .container{
   display:flex;flex-direction:column;justify-content:space-between;align-items:center;
   height:100%;padding:var(--section-pad);
 }
-.app-title{
-  font-size:var(--title-size);
-  font-weight:900;margin:0;text-align:center;
-}
+.app-title{font-size:var(--title-size);font-weight:900;margin:0;text-align:center;}
 .menu{
   width:var(--menu-width);max-width:340px;
-  display:flex;flex-direction:column;align-items:center;
-  gap:var(--btn-gap);
+  display:flex;flex-direction:column;align-items:center;gap:var(--btn-gap);
 }
 .menu-btn{background:var(--fg);color:var(--text-green);box-shadow:var(--shadow);}
 
-/* ───── 장 목록 화면 ───── */
+/* ─── 장 목록 ─── */
 .chapter-list{
   width:100%;max-width:480px;margin:0 auto;
   display:flex;flex-direction:column;align-items:center;
   gap:var(--btn-gap);height:100%;overflow-y:auto;padding-top:4vh;
 }
-.chapter-btn{
-  width:100%;max-width:340px;
-  background:var(--fg);color:var(--text-green);box-shadow:var(--shadow);
-}
+.chapter-btn{width:100%;max-width:340px;background:var(--fg);color:var(--text-green);box-shadow:var(--shadow);}
 
-/* ───── 강해 내용 화면 ───── */
+/* ─── 강해 ─── */
 .content-wrap{display:flex;flex-direction:column;height:100%;}
 .content-header{flex:0 0 auto;padding:1rem 0;border-bottom:2px solid var(--fg);text-align:center;}
 .content-header h2{margin:0;font-size:calc(1em * var(--ui-scale));font-weight:900;color:var(--fg);}
@@ -86,16 +80,9 @@ button:active{transform:translateY(4px);box-shadow:var(--shadow-press);}
 .content-footer{flex:0 0 auto;padding:2vh 0 4vh;display:flex;justify-content:center;}
 .list-btn{max-width:500px;background:var(--fg);color:var(--text-green);box-shadow:var(--shadow);}
 
-/* ───── 설정 화면 ───── */
-.settings-wrap{
-  display:flex;flex-direction:column;gap:var(--btn-gap);
-  align-items:center;padding:var(--section-pad);
-}
-.card{
-  width:90%;max-width:350px;padding:1.2rem;
-  background:var(--fg);color:var(--text-green);
-  border-radius:var(--radius);box-shadow:var(--shadow);
-}
+/* ─── 설정 ─── */
+.settings-wrap{display:flex;flex-direction:column;gap:var(--btn-gap);align-items:center;padding:var(--section-pad);}
+.card{width:90%;max-width:350px;padding:1.2rem;background:var(--fg);color:var(--text-green);border-radius:var(--radius);box-shadow:var(--shadow);}
 .card-title{font-weight:700;margin-bottom:.8rem;display:block;}
 .range-val{margin-top:.6rem;font-weight:700;}
 input[type=range]{-webkit-appearance:none;width:100%;height:6px;background:var(--text-green);border-radius:3px;cursor:pointer;}
@@ -105,32 +92,6 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .save-btn{background:#f9c000;color:var(--text-green);}
 .close-btn{background:var(--text-green);color:var(--fg);}
 
-/* ───── 팝업 ───── */
+/* ─── 팝업 ─── */
 .popup{position:fixed;inset:0;display:none;justify-content:center;align-items:center;background:rgba(0,0,0,.45);z-index:999;}
 .popup-box{background:var(--fg);color:var(--text-green);padding:1.4rem 2rem;border-radius:var(--radius);font-weight:700;box-shadow:var(--shadow);}
-
-/* ───── 360 px 이하 ───── */
-@media (max-width:360px){
-  .card{padding:1rem;}
-  button{word-break:keep-all;}
-}
-
-/* ───── 가로 화면 ───── */
-@media (orientation:landscape){
-  .content-body{padding:1rem 3rem;}
-  .content-footer{padding:1vh 0 2vh;}
-  .settings-wrap{padding:2vh 0 4vh;}
-}
-
-/* ───── 태블릿 이상 ───── */
-@media (min-width:768px){
-  :root{--btn-gap:2.5rem;}
-  .app-title{font-size:calc(56px * var(--ui-scale));}
-  .container,.settings-wrap{max-width:680px;margin:0 auto;}
-  .menu,.chapter-list{max-width:480px;}
-}
-
-/* ───── 그림자 제거 옵션 ───── */
-@media (prefers-reduced-motion: reduce){
-  *{box-shadow:none!important;}
-}
