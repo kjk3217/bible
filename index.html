@@ -13,11 +13,11 @@
     <meta name="msapplication-tap-highlight" content="no">
     
     <!-- PWA 아이콘 설정 -->
-    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-    <link rel="apple-touch-icon" href="icon-192.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192a.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512a.png">
+    <link rel="apple-touch-icon" href="icon-192a.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192a.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512a.png">
     
     <!-- 매니페스트 -->
     <link rel="manifest" href="manifest.json">
@@ -35,14 +35,14 @@
     <meta property="og:title" content="성경 강해집">
     <meta property="og:description" content="요한계시록과 이사야 강해를 공부하는 PWA 앱">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="icon-512.png">
+    <meta property="og:image" content="icon-512a.png">
     <meta property="og:url" content="">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="성경 강해집">
     <meta name="twitter:description" content="요한계시록과 이사야 강해를 공부하는 PWA 앱">
-    <meta name="twitter:image" content="icon-512.png">
+    <meta name="twitter:image" content="icon-512a.png">
     
     <title>성경 강해집</title>
 </head>
@@ -57,18 +57,14 @@
             
             <!-- 중앙 버튼 영역 -->
             <div class="buttons-section">
-                <button class="main-book-btn" onclick="selectBook('revelation')" aria-label="요한계시록 강해 선택">
-                    요한계시록
-                </button>
+                <img src="btn-revelation.png" alt="요한계시록 강해 선택" class="main-book-img-btn" onclick="selectBook('revelation')">
                 
-                <button class="main-book-btn" onclick="selectBook('isaiah')" aria-label="이사야 강해 선택">
-                    이사야
-                </button>
+                <img src="btn-isaiah.png" alt="이사야 강해 선택" class="main-book-img-btn" onclick="selectBook('isaiah')">
             </div>
             
             <!-- 하단 버전 정보 -->
             <div class="version-section">
-                <span class="version-text">성경 공부 앱 v2.0</span>
+                <span class="version-text">성경 공부 앱 v2.1</span>
             </div>
         </div>
     </div>
@@ -101,9 +97,9 @@
         
         <!-- 하단 컨트롤 바 -->
         <div class="content-footer" role="toolbar" aria-label="내용 제어">
-            <button class="size-control-btn" onclick="decreaseFontSize()" aria-label="글자 크기 줄이기" title="글자 크기 줄이기">-</button>
-            <button class="size-control-btn" onclick="increaseFontSize()" aria-label="글자 크기 키우기" title="글자 크기 키우기">+</button>
-            <button class="home-btn" onclick="goBack()" aria-label="홈으로 돌아가기" title="홈으로 돌아가기">홈</button>
+            <img src="btn-minus.png" alt="글자 크기 줄이기" class="control-img-btn" onclick="decreaseFontSize()" title="글자 크기 줄이기">
+            <img src="btn-plus.png" alt="글자 크기 키우기" class="control-img-btn" onclick="increaseFontSize()" title="글자 크기 키우기">
+            <img src="btn-home.png" alt="홈으로 돌아가기" class="home-img-btn" onclick="goBack()" title="홈으로 돌아가기">
         </div>
     </div>
 
@@ -123,16 +119,5 @@
             e.preventDefault();
         });
     </script>
-    
-    <!-- 구글 애널리틱스 (필요시 추가) -->
-    <!-- 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-    -->
 </body>
 </html>
