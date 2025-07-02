@@ -782,3 +782,115 @@ button:focus,
         background: white !important;
     }
 }
+/* 이미지 버튼 스타일 추가 */
+
+/* 메인 화면 이미지 버튼 */
+.main-book-img-btn {
+    width: 280px;
+    max-width: 90%;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    display: block;
+    object-fit: contain;
+}
+
+.main-book-img-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.main-book-img-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 하단 컨트롤 이미지 버튼 */
+.control-img-btn {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 14px;
+    object-fit: contain;
+}
+
+.control-img-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.control-img-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 홈 이미지 버튼 */
+.home-img-btn {
+    width: auto;
+    height: 60px;
+    max-width: 120px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 14px;
+    object-fit: contain;
+}
+
+.home-img-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.home-img-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 기존 버튼들 숨기기 */
+.main-book-btn {
+    display: none;
+}
+
+.size-control-btn {
+    display: none;
+}
+
+.home-btn {
+    display: none;
+}
+
+/* 반응형 이미지 버튼 */
+@media screen and (orientation: landscape) {
+    .main-book-img-btn {
+        width: 250px;
+    }
+    
+    .control-img-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .home-img-btn {
+        height: 50px;
+        max-width: 100px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .main-book-img-btn {
+        width: 100%;
+        max-width: 260px;
+    }
+    
+    .control-img-btn {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .home-img-btn {
+        height: 55px;
+        max-width: 110px;
+    }
+}
