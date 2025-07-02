@@ -1,21 +1,27 @@
 // 서비스 워커 - 성경 강해집 PWA
-const CACHE_NAME = 'bible-study-v2.0.0';
-const CACHE_VERSION = '2.0.0';
+const CACHE_NAME = 'bible-study-v2.1.0';
+const CACHE_VERSION = '2.1.0';
+const BASE_PATH = '/study2';
 
 // 앱 셸 캐싱 파일들
 const APP_SHELL_FILES = [
-    '/',
-    '/index.html',
-    '/style.css',
-    '/app.js',
-    '/manifest.json'
+    BASE_PATH + '/',
+    BASE_PATH + '/index.html',
+    BASE_PATH + '/style.css',
+    BASE_PATH + '/app.js',
+    BASE_PATH + '/manifest.json'
 ];
 
 // 이미지 파일들
 const IMAGE_FILES = [
-    '/main-logo.png',
-    '/icon-192.png',
-    '/icon-512.png'
+    BASE_PATH + '/main-logo.png',
+    BASE_PATH + '/icon-192a.png',
+    BASE_PATH + '/icon-512a.png',
+    BASE_PATH + '/btn-revelation.png',
+    BASE_PATH + '/btn-isaiah.png',
+    BASE_PATH + '/btn-minus.png',
+    BASE_PATH + '/btn-plus.png',
+    BASE_PATH + '/btn-home.png'
 ];
 
 // 데이터 파일들 (동적으로 생성)
@@ -24,12 +30,12 @@ const getDataFiles = () => {
     
     // 요한계시록 1-22장
     for (let i = 1; i <= 22; i++) {
-        files.push(`/data/Rev/R-chapter${i}.txt`);
+        files.push(`${BASE_PATH}/data/Rev/R-chapter${i}.txt`);
     }
     
     // 이사야 1-66장
     for (let i = 1; i <= 66; i++) {
-        files.push(`/data/Isa/I-chapter${i}.txt`);
+        files.push(`${BASE_PATH}/data/Isa/I-chapter${i}.txt`);
     }
     
     return files;
@@ -199,7 +205,7 @@ async function updateCacheInBackground(request) {
 function getOfflineFallback(request) {
     // HTML 요청의 경우 메인 페이지 반환
     if (request.destination === 'document') {
-        return caches.match('/index.html');
+        return caches.match(BASE_PATH + '/index.html');
     }
     
     // 텍스트 파일의 경우 오프라인 메시지 반환
@@ -239,8 +245,8 @@ self.addEventListener('push', function(event) {
     const title = '성경 강해집';
     const options = {
         body: event.data ? event.data.text() : '새로운 강해 내용이 업데이트되었습니다.',
-        icon: '/icon-192.png',
-        badge: '/icon-192.png',
+        icon: BASE_PATH + '/icon-192a.png',
+        badge: BASE_PATH + '/icon-192a.png',
         vibrate: [100, 50, 100],
         data: {
             dateOfArrival: Date.now(),
@@ -250,7 +256,7 @@ self.addEventListener('push', function(event) {
             {
                 action: 'explore',
                 title: '확인하기',
-                icon: '/icon-192.png'
+                icon: BASE_PATH + '/icon-192a.png'
             },
             {
                 action: 'close',
@@ -279,7 +285,7 @@ self.addEventListener('notificationclick', function(event) {
                     if (clientList.length > 0) {
                         return clientList[0].focus();
                     } else {
-                        return clients.openWindow('/');
+                        return clients.openWindow(BASE_PATH + '/');
                     }
                 })
         );
