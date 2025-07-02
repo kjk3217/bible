@@ -286,7 +286,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -329,10 +329,10 @@ body {
 
 /* 홈 버튼 */
 .home-btn {
-    background-color: #1f6d5e;
+    background-color: #16463d;
     color: #ffffff;
     border: none;
-    padding: 15px 35px;
+    padding: 15px 50px;
     border-radius: 14px;
     font-size: 32px;
     font-weight: bold;
