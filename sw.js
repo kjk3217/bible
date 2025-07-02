@@ -13,9 +13,14 @@ const APP_SHELL_FILES = [
 
 // 이미지 파일들
 const IMAGE_FILES = [
-    '/main-logo.png',
-    '/icon-192.png',
-    '/icon-512.png'
+    BASE_PATH + '/main-logo.png',
+    BASE_PATH + '/icon-192.png',
+    BASE_PATH + '/icon-512.png',
+    BASE_PATH + '/btn-revelation.png',    // 추가
+    BASE_PATH + '/btn-isaiah.png',        // 추가
+    BASE_PATH + '/btn-minus.png',         // 추가
+    BASE_PATH + '/btn-plus.png',          // 추가
+    BASE_PATH + '/btn-home.png'           // 추가
 ];
 
 // 데이터 파일들 (동적으로 생성)
