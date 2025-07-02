@@ -12,16 +12,11 @@ const APP_SHELL_FILES = [
     BASE_PATH + '/manifest.json'
 ];
 
-// 이미지 파일들
+// 이미지 파일들 (버튼 이미지 제거)
 const IMAGE_FILES = [
     BASE_PATH + '/main-logo.png',
     BASE_PATH + '/icon-192a.png',
-    BASE_PATH + '/icon-512a.png',
-    BASE_PATH + '/btn-revelation.png',
-    BASE_PATH + '/btn-isaiah.png',
-    BASE_PATH + '/btn-minus.png',
-    BASE_PATH + '/btn-plus.png',
-    BASE_PATH + '/btn-home.png'
+    BASE_PATH + '/icon-512a.png'
 ];
 
 // 데이터 파일들 (동적으로 생성)
