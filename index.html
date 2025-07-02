@@ -57,13 +57,9 @@
             
             <!-- 중앙 버튼 영역 -->
             <div class="buttons-section">
-                <button class="main-book-btn" onclick="selectBook('revelation')" aria-label="요한계시록 강해 선택">
-                    요한계시록
-                </button>
+                <img src="btn-revelation.png" alt="요한계시록 강해 선택" class="main-book-img-btn" onclick="selectBook('revelation')">
                 
-                <button class="main-book-btn" onclick="selectBook('isaiah')" aria-label="이사야 강해 선택">
-                    이사야
-                </button>
+                <img src="btn-isaiah.png" alt="이사야 강해 선택" class="main-book-img-btn" onclick="selectBook('isaiah')">
             </div>
             
             <!-- 하단 버전 정보 -->
@@ -101,9 +97,9 @@
         
         <!-- 하단 컨트롤 바 -->
         <div class="content-footer" role="toolbar" aria-label="내용 제어">
-            <button class="size-control-btn" onclick="decreaseFontSize()" aria-label="글자 크기 줄이기" title="글자 크기 줄이기">-</button>
-            <button class="size-control-btn" onclick="increaseFontSize()" aria-label="글자 크기 키우기" title="글자 크기 키우기">+</button>
-            <button class="home-btn" onclick="goBack()" aria-label="홈으로 돌아가기" title="홈으로 돌아가기">홈</button>
+            <img src="btn-minus.png" alt="글자 크기 줄이기" class="control-img-btn" onclick="decreaseFontSize()" title="글자 크기 줄이기">
+            <img src="btn-plus.png" alt="글자 크기 키우기" class="control-img-btn" onclick="increaseFontSize()" title="글자 크기 키우기">
+            <img src="btn-home.png" alt="홈으로 돌아가기" class="home-img-btn" onclick="goBack()" title="홈으로 돌아가기">
         </div>
     </div>
 
@@ -123,16 +119,5 @@
             e.preventDefault();
         });
     </script>
-    
-    <!-- 구글 애널리틱스 (필요시 추가) -->
-    <!-- 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-    -->
 </body>
 </html>
