@@ -18,7 +18,7 @@
       "purpose": "any"
     },
     {
-      "src": "/study2/icon-512.png",
+      "src": "/study2/icon-512a.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
@@ -30,7 +30,7 @@
       "purpose": "maskable"
     },
     {
-      "src": "/study2/icon-512.png",
+      "src": "/study2/icon-512a.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
